@@ -7,26 +7,40 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class App3 {
-    public static void main(String[] args) {
-      Scanner keyIn = new Scanner(System.in);
-      
-      Date date;
-      int s =0;
-      
+  public static void main(String[] args) {
+    Scanner keyIn = new Scanner(System.in);
+
+    final int size = 20;
+    Date[] date = new Date[size];
+    int[] no = new int[size];
+    String[] contents = new String[size];
+
+    int len = 0;
+    int s = 0;
+    
+    for(int i =0; i<size;i++) {
       System.out.print("번호?");
-      int no = Integer.parseInt(keyIn.nextLine());
-      
+      no[i] = Integer.parseInt(keyIn.nextLine());
+
       System.out.print("내용?");
-      String contents = keyIn.nextLine();
-      
-      date = new Date();      
-      
-      keyIn.close();
-      
-      System.out.printf("번호: %s%n",no);
-      System.out.printf("내용: %s%n",contents);
-      System.out.printf("작성일: %s%n",date);
-      System.out.printf("조회수: %s%n",s);
-      
+      contents[i] = keyIn.nextLine();
+
+      date[i] = new Date();      
+      len++;
+      System.out.printf("계속하시겠습니까?(Y/n)");
+      String input = keyIn.nextLine();
+      if(input.equals("")||input.equalsIgnoreCase("y")) {
+        continue;
+      }
+      break;
     }
+
+    keyIn.close();
+
+    for(int i=0;i<len;i++) {
+      //출력값 내용 /t , 시간, 조회수
+      
+      System.out.printf("%s\t,%s,%d%n", contents[i], date[i], s );
+    }
+  }
 }

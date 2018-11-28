@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class App2 {
   public static void main(String[] args) {
     Scanner keyIn = new Scanner(System.in);
-    int size = 20;
+    final int size = 20;
 
     int[] no = new int[size];
     String[] name = new String[size];
