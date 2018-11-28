@@ -46,6 +46,7 @@ public class App {
       dayHours[i] = Integer.parseInt(keyIn.nextLine());
 
       len++;
+      
       System.out.print("계속하시겠습니까?(Y/n)");
       String input = keyIn.nextLine();
       if(input.equals("")||input.equalsIgnoreCase("y")) {
@@ -54,7 +55,8 @@ public class App {
       break;
     }
     keyIn.close();
-
+    
+    //
     for(int i=0; i<len; i++) {
       System.out.printf("%d, %s, %s ~ %s, %d\n", 
           no[i], title[i], startDate[i], endDate[i], totalHours[i]);
