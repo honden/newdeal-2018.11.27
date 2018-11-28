@@ -13,33 +13,29 @@ public class App {
       System.out.print("번호?");
       int no = Integer.parseInt(keyIn.nextLine());
       
-      System.out.print("수업명?");
-      String title = keyIn.nextLine();
+      System.out.print("이름?");
+      String name = keyIn.nextLine();
       
-      System.out.print("내용?");
-      String contants = keyIn.nextLine();
+      System.out.print("이메일?");
+      String email = keyIn.nextLine();
       
-      System.out.print("강의시작일?");
-      Date startDate = Date.valueOf(keyIn.nextLine());
+      System.out.print("암호?");
+      int password = Integer.parseInt(keyIn.nextLine());
       
-      System.out.print("강의종료일?");
-      Date endDate = Date.valueOf(keyIn.nextLine());
+      System.out.print("사진?");
+      String p = keyIn.nextLine();
       
-      System.out.print("총강의시간?");
-      int totalHours = Integer.parseInt(keyIn.nextLine());
+      System.out.print("전화?");
+      String pn = keyIn.nextLine();
       
-      System.out.print("일강의시간?");
-      int dayHours = Integer.parseInt(keyIn.nextLine());
-
       keyIn.close();
       
+      System.out.println("번호: %s%n"+no);
+      System.out.println("이름: %s%n"+name);
+      System.out.println("이메일: %s%n"+email);
+      System.out.println("암호: %s%n"+password);
+      System.out.println("사진: %s%n"+p);
+      System.out.println("전화: %s%n"+pn);
       
-      System.out.println("번호:" + no);
-      System.out.println("수업명: %s%n" + title);
-      System.out.println("내용: %s%n" + contants);
-      System.out.println("시작일: %s%n" + startDate);
-      System.out.println("종료일: %s%n" + endDate);
-      System.out.println("총수업시간: %s%n" + totalHours);
-      System.out.println("일수업시간: %s%n" + dayHours);
     }
 }
