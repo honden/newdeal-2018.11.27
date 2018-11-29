@@ -9,36 +9,31 @@ public class App2 {
 
     final int LENGTH = 10;
     
-    int[] no = new int[LENGTH];
-    String[] name = new String[LENGTH];
-    String[] email = new String[LENGTH];
-    String[] password = new String[LENGTH];
-    String[] photo = new String[LENGTH];
-    String[] tel = new String[LENGTH];
-    Date[] registeredDate = new Date[LENGTH];
+    Member[] members = new Member[LENGTH];
     
     int i = 0;
     while (i < LENGTH) {
+      Member member = new Member();
       System.out.print("번호? ");
-      no[i] = Integer.parseInt(keyboard.nextLine());
+      member.no = Integer.parseInt(keyboard.nextLine());
       
       System.out.print("이름? ");
-      name[i] = keyboard.nextLine();
+      member.name = keyboard.nextLine();
       
       System.out.print("이메일? ");
-      email[i] = keyboard.nextLine();
+      member.email = keyboard.nextLine();
       
       System.out.print("암호? ");
-      password[i] = keyboard.nextLine();
+      member.password = keyboard.nextLine();
   
       System.out.print("사진? ");
-      photo[i] = keyboard.nextLine();
+      member.photo = keyboard.nextLine();
   
       System.out.print("전화? ");
-      tel[i] = keyboard.nextLine();
+      member.tel = keyboard.nextLine();
   
-      registeredDate[i] = new Date(System.currentTimeMillis()); 
-      
+      member.registeredDate = new Date(System.currentTimeMillis()); 
+      members[i]=member;
       i++;
       
       System.out.print("\n계속 입력하시겠습니까?(Y/n) ");
@@ -58,7 +53,7 @@ public class App2 {
     // 배열에 입력한 개수만큼 출력한다.
     for (int j = 0; j < i; j++) {
       System.out.printf("%3d, %-4s, %-20s, %-15s, %s\n", 
-          no[j], name[j], email[j], tel[j], registeredDate[j]);
+          members[j].no, members[j].name, members[j].email, members[j].tel, members[j].registeredDate);
     }
   }
 }

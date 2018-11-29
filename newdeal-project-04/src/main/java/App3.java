@@ -8,23 +8,22 @@ public class App3 {
 
     final int LENGTH = 10;
     
-    int[] no = new int[LENGTH];
-    String[] contents = new String[LENGTH];
-    Date[] createdDate = new Date[LENGTH];
-    int[] viewCount = new int[LENGTH];
+    Board[] boards = new Board[LENGTH];
     
     int i = 0;
     while (i < LENGTH) {
       System.out.print("번호? ");
-      no[i] = Integer.parseInt(keyboard.nextLine());
+      Board board = new Board();
+      board.no = Integer.parseInt(keyboard.nextLine());
       
       System.out.print("내용? ");
-      contents[i] = keyboard.nextLine();
+      board.contents = keyboard.nextLine();
       
-      createdDate[i] = new Date(System.currentTimeMillis()); 
+      board.createdDate = new Date(System.currentTimeMillis()); 
       
-      viewCount[i] = 0;
+      board.viewCount = 0;
       
+      boards[i] = board;
       i++;
       
       System.out.print("\n계속 입력하시겠습니까?(Y/n) ");
@@ -44,7 +43,7 @@ public class App3 {
     // 배열에 입력한 개수만큼 출력한다.
     for (int j = 0; j < i; j++) {
       System.out.printf("%3d, %-20s, %s, %d\n", 
-          no[j], contents[j], createdDate[j], viewCount[j]);
+          boards[j].no, boards[j].contents, boards[j].createdDate, boards[j].viewCount);
     }
   }
 }
