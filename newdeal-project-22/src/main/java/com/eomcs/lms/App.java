@@ -10,9 +10,8 @@ public class App {
 
   public static void main(String[] args) {
     
-    LessonHandler.keyboard = keyboard;
-    MemberHandler.keyboard = keyboard;
-
+    LessonHandler l = new LessonHandler(keyboard);
+    MemberHandler m = new MemberHandler(keyboard);
     BoardHandler b1 = new BoardHandler(keyboard);
     BoardHandler b2 = new BoardHandler(keyboard);
     
@@ -20,16 +19,16 @@ public class App {
       String command = prompt();
 
       if (command.equals("/lesson/add")) {
-        LessonHandler.addLesson();
+        l.addLesson();
         
       } else if (command.equals("/lesson/list")) {
-        LessonHandler.listLesson();
+        l.listLesson();
       
       } else if (command.equals("/member/add")) {
-        MemberHandler.addMember();
+        m.addMember();
         
       } else if (command.equals("/member/list")) {
-        MemberHandler.listMember();
+        m.listMember();
         
       } else if (command.equals("/board/add")) {
         b1.addBoard();

@@ -11,6 +11,7 @@ public class App {
 
     Lesson[] lessons = new Lesson[LENGTH];
     Member[] members = new Member[LENGTH];
+    Board[] boards = new Board[LENGTH];
     
     int i = 0;
 
@@ -53,7 +54,7 @@ public class App {
               lessons[j].no, lessons[j].title, lessons[j].startDate,
               lessons[j].endDate, lessons[j].totalHours);
         }
-      } else if(command.equals("/lesson/list")) {
+      } else if(command.equals("/member/add")) {
         Member member = new Member();
         
         System.out.print("번호? ");
@@ -78,9 +79,33 @@ public class App {
         
         members[i] = member;
         i++;
-      }else if(command.equals("/lesson/list")) {
-        System.out.println("유효하지 않은 명령어입니다.");
-      }else if(command.equals("/lesson/list")) {
+      }else if(command.equals("/member/list")) {
+        for (int j = 0; j < i; j++) {
+          System.out.printf("%3d, %-4s, %-20s, %-15s, %s\n", 
+              members[j].no, members[j].name, members[j].email, 
+              members[j].tel, members[j].registeredDate);
+        }
+      }else if(command.equals("/board/add")) {
+        Board board = new Board();
+        
+        System.out.print("번호? ");
+        board.no = Integer.parseInt(keyboard.nextLine());
+        
+        System.out.print("내용? ");
+        board.contents = keyboard.nextLine();
+        
+        board.createdDate = new Date(System.currentTimeMillis()); 
+        
+        board.viewCount = 0;
+        
+        boards[i] = board;
+        i++;
+      }else if(command.equals("/board/list")) {
+        for (int j = 0; j < i; j++) {
+          System.out.printf("%3d, %-20s, %s, %d\n", 
+              boards[j].no, boards[j].contents, boards[j].createdDate, boards[j].viewCount);
+        }
+      }else {
         System.out.println("유효하지 않은 명령어입니다.");
       }
       System.out.println();
