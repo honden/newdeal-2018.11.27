@@ -1,34 +1,35 @@
 package com.eomcs.lms.handler;
 
 import java.util.Arrays;
+import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.domain.Lesson;
 
-public class LessonList {
+public class BoardList {
   static final int LENGTH = 10;
-  private Lesson[] list;
+  private Board[] list;
   private int size = 0;
 
-  public LessonList() {
-    this.list = new Lesson[LENGTH];
+  public BoardList() {
+    this.list = new Board[LENGTH];
   }
 
-  public LessonList(int initialCapacity) {
+  public BoardList(int initialCapacity) {
     if(initialCapacity>LENGTH){
-      this.list = new Lesson[initialCapacity];
+      this.list = new Board[initialCapacity];
     }else{
-      this.list = new Lesson[LENGTH];
+      this.list = new Board[LENGTH];
     }
   }
-  public Lesson[] toArray() {
+  public Board[] toArray() {
     return Arrays.copyOf(list, size);
   }
-  public void add(Lesson lesson) {
+  public void add(Board board) {
     if(size >= list.length) {
       int oldLength = list.length;
       int newCapacity = oldLength + oldLength >> 1;
       list = Arrays.copyOf(list, newCapacity);
     }
-    list[size] = lesson;
+    list[size] = board;
     size++;
   }
 }

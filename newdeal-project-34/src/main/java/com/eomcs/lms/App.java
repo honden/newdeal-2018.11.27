@@ -7,6 +7,7 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 import com.eomcs.lms.domain.Board;
+import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.handler.BoardAddCommand;
 import com.eomcs.lms.handler.BoardDeleteCommand;
 import com.eomcs.lms.handler.BoardDetailCommand;
@@ -14,7 +15,11 @@ import com.eomcs.lms.handler.BoardListCommand;
 import com.eomcs.lms.handler.BoardUpdateCommand;
 import com.eomcs.lms.handler.Command;
 import com.eomcs.lms.handler.HelloCommand;
-import com.eomcs.lms.handler.LessonHandler;
+import com.eomcs.lms.handler.LessonAddCommand;
+import com.eomcs.lms.handler.LessonDeleteCommand;
+import com.eomcs.lms.handler.LessonDetailCommand;
+import com.eomcs.lms.handler.LessonListCommand;
+import com.eomcs.lms.handler.LessonUpdateCommand;
 import com.eomcs.lms.handler.MemberHandler;
 
 public class App {
@@ -24,9 +29,10 @@ public class App {
   static Queue<String> commandHistory2 = new LinkedList<>();
   
   public static void main(String[] args) {
-    LessonHandler lessonHandler = new LessonHandler(keyboard, new ArrayList<>());
+    
     MemberHandler memberHandler = new MemberHandler(keyboard, new LinkedList<>());
     ArrayList<Board> boards = new ArrayList<>();
+    ArrayList<Lesson> lessons = new ArrayList<>();
     
     HashMap<String,Command> commandMap = new HashMap<>();
     
@@ -35,6 +41,11 @@ public class App {
     commandMap.put("/board/update", new BoardUpdateCommand(keyboard, boards));
     commandMap.put("/board/delete", new BoardDeleteCommand(keyboard, boards));
     commandMap.put("/board/add", new BoardAddCommand(keyboard, boards));
+    commandMap.put("/lesson/list", new LessonListCommand(keyboard, lessons));
+    commandMap.put("/lesson/detail", new LessonDetailCommand(keyboard, lessons));
+    commandMap.put("/lesson/update", new LessonUpdateCommand(keyboard, lessons));
+    commandMap.put("/lesson/delete", new LessonDeleteCommand(keyboard, lessons));
+    commandMap.put("/lesson/add", new LessonAddCommand(keyboard, lessons));
     commandMap.put("hi", new HelloCommand(keyboard));
     while (true) {
       String command = prompt();

@@ -115,14 +115,14 @@ public class App {
     Interator<String>iterator = commandHistory.interator();
     
     while (iterator.hasNext()) {
-      System.out.println(temp.pop());
+      System.out.println(iterator.next());
     }
   }
   
   private static void printCommandHistory2() {
     Interator<String>iterator = commandHistory.interator();
     while (iterator.hasNext()) {
-      System.out.println(temp.poll());
+      System.out.println(iterator.next());
     }
   }
 
