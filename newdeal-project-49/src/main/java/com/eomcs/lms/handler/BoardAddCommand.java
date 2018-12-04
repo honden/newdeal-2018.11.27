@@ -24,7 +24,7 @@ public class BoardAddCommand implements Command {
       board.setContents(keyboard.nextLine());
 
       System.out.print("작성자번호? ");
-      board.setLessonNo(Integer.parseInt(keyboard.nextLine()));
+      board.setWriterNo(Integer.parseInt(keyboard.nextLine()));
 
       System.out.print("수업번호? ");
       board.setLessonNo(Integer.parseInt(keyboard.nextLine()));
