@@ -7,7 +7,7 @@
   <id column="bno" property="no"/>
   <result column="cont" property="contents"/>
   <result column="cdt" property="createdDate"/>
-  <result column="view" property="ciewCount"/>
+  <result column="view" property="viewCount"/>
   <result column="mno" property="writerNo"/>
   <result column="lno" property="lessonNo"/>
   </resultMap>
@@ -16,7 +16,7 @@
 		select bno,cont,cdt,view from board
 	</select>
 
-	<select id="findByNo" resultType="board" parameterType="int">
+	<select id="findByNo" resultMap="boardMap" parameterType="int">
 		select bno,cont,cdt,view,mno,lno
 		from board
 		where bno=#{int}

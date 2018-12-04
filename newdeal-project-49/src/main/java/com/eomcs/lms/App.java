@@ -22,7 +22,9 @@ import com.eomcs.lms.handler.LessonDetailCommand;
 import com.eomcs.lms.handler.LessonListCommand;
 import com.eomcs.lms.handler.LessonUpdateCommand;
 import Dao.BoardDao;
+import Dao.LessonDao;
 import Dao.impl.MariaDBBoardDao;
+import Dao.impl.MariaDBLessonDao;
 
 public class App {
   static Scanner keyboard = new Scanner(System.in);
@@ -36,6 +38,7 @@ public class App {
         new SqlSessionFactoryBuilder().build(inputStream);
     
     BoardDao boardDao = new MariaDBBoardDao(sqlSessionFactory);
+    LessonDao lessonDao = new MariaDBLessonDao(sqlSessionFactory);
     HashMap<String,Command> commandMap = new HashMap<>();
     
     commandMap.put("/board/list", new BoardListCommand(keyboard, boardDao));
@@ -43,11 +46,11 @@ public class App {
     commandMap.put("/board/update", new BoardUpdateCommand(keyboard, boardDao));
     commandMap.put("/board/delete", new BoardDeleteCommand(keyboard, boardDao));
     commandMap.put("/board/add", new BoardAddCommand(keyboard, boardDao));
-    commandMap.put("/lesson/list", new LessonListCommand(keyboard));
-    commandMap.put("/lesson/detail", new LessonDetailCommand(keyboard));
-    commandMap.put("/lesson/update", new LessonUpdateCommand(keyboard));
-    commandMap.put("/lesson/delete", new LessonDeleteCommand(keyboard));
-    commandMap.put("/lesson/add", new LessonAddCommand(keyboard));
+    commandMap.put("/lesson/list", new LessonListCommand(keyboard, lessonDao));
+    commandMap.put("/lesson/detail", new LessonDetailCommand(keyboard, lessonDao));
+    commandMap.put("/lesson/update", new LessonUpdateCommand(keyboard, lessonDao));
+    commandMap.put("/lesson/delete", new LessonDeleteCommand(keyboard, lessonDao));
+    commandMap.put("/lesson/add", new LessonAddCommand(keyboard, lessonDao));
     commandMap.put("hi", new HelloCommand(keyboard));
     while (true) {
       String command = prompt();

@@ -57,6 +57,4 @@ public class Lesson implements Cloneable {
   public void setDayHours(int dayHours) {
     this.dayHours = dayHours;
   }
-  
-  
 }

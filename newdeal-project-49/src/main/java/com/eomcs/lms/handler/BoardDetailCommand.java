@@ -17,6 +17,7 @@ public class BoardDetailCommand implements Command {
     try {
       System.out.print("번호? ");
       int no = Integer.parseInt(keyboard.nextLine());
+      System.out.println(no);
       Board board = boardDao.findByNo(no);
 
       if(board != null) {

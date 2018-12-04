@@ -3,6 +3,7 @@ package com.eomcs.lms.handler;
 import java.sql.DriverManager;
 import java.util.Scanner;
 import org.mariadb.jdbc.Driver;
+import com.eomcs.lms.domain.Board;
 import Dao.BoardDao;
 
 public class BoardDetailCommand implements Command {
@@ -15,25 +16,26 @@ public class BoardDetailCommand implements Command {
   }
 
   public void execute() {
-    System.out.print("번호? ");
-    int no = Integer.parseInt(keyboard.nextLine());
-    DriverManager.registerDriver(new Driver());
-    if(Board board) {
-      boarSystem.out.printf("번호 : %d\n",rs.getInt("bno"));
-      System.out.printf("내용 : %s\n",rs.getString("cont"));
-      System.out.printf("작성일 : %s\n",rs.getDate("cdt"));
-      System.out.printf("조회수 : %d\n",rs.getInt("view"));
-      System.out.printf("작성자 : %d\n",rs.getInt("mno"));
-      System.out.printf("수업 : %d\n",rs.getInt("lno"));
-    }else {
-      System.out.printf("해당 번호의 게시물이 없습니다!");
+    try {
+      System.out.print("번호? ");
+      int no = Integer.parseInt(keyboard.nextLine());
+      DriverManager.registerDriver(new Driver());
+      Board board = boardDao.findByNo(no);
+
+      // dbms에서 한 개의 레코드를 가져온다.
+      if (board != null) {
+        System.out.printf("번호: %d\n", board.getNo());
+        System.out.printf("내용: %s\n", board.getContents());
+        System.out.printf("작성일: %s\n", board.getCreatedDate());
+        System.out.printf("조회수: %d\n", board.getViewCount());
+        System.out.printf("작성자: %d\n", board.getWriterNo());
+        System.out.printf("수업: %d\n", board.getLessonNo());
+      } else {
+        System.out.println("해당 번호의 게시물이 없습니다!");
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
     }
-  }catch (Exception e){
-    e.printStackTrace();
-  }finally {
-    try {rs.close();}catch(Exception e) {}
-    try {stmt.close();}catch(Exception e) {}
-    try {con.close();}catch(Exception e) {}
   }
-}
 }

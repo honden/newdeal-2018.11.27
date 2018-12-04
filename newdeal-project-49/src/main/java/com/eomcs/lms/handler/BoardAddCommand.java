@@ -35,8 +35,6 @@ public class BoardAddCommand implements Command {
       System.out.printf("입력했습니다!");
     }catch (Exception e){
       e.printStackTrace();
-    }finally {
     }
-
   }
 }
