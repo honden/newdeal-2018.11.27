@@ -1,0 +1,48 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LessonDao">
+  <resultMap type="lesson" id="lessonMap">
+  
+  <id column="lno" property="no"/>
+  <result column="title" property="title"/>
+  <result column="cont" property="contents"/>
+  <result column="sdt" property="startDate"/>
+  <result column="edt" property="endDate"/>
+  <result column="tot_hr" property="totalHours"/>
+  <result column="day_hr" property="dayHours"/>
+  </resultMap>
+
+	<select id="findAll" resultMap="lessonMap">
+		select lno, title, sdt, edt, tot_hr 
+    from lesson
+	</select>
+
+	<select id="findByNo" resultMap="lessonMap" parameterType="int">
+    select lno, title, cont, sdt, edt, tot_hr 
+    from lesson 
+    where lno =#{int}
+	</select>
+
+	<select id="insert" parameterType="lesson">
+		insert into
+		lesson(title, cont, sdt, edt, tot_hr, day_hr, mno)
+		values(#{title},#{content},#{startDate},#{endDate},#{totalHours},#{dayHours})
+	</select>
+
+	<update id="update" parameterType="lesson">
+		update lesson set 
+		title=#{title},
+    cont=#{content},
+    str=#{startDate},
+    edt=#{endDate},
+    tot_hr=#{totalHours},
+    day_hr=#{dayHours}
+		where lno=#{no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+	delete from lesson 
+	where lno=#{value}
+	</delete>
+</mapper>
