@@ -30,6 +30,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.3.RELEASE'
     // providedCompile 이놈은 만들때만 쓰고 배포는 안하겠다는 뜻
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+   
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
 
 }
 
