@@ -11,19 +11,21 @@
   <result column="edt" property="endDate"/>
   <result column="tot_hr" property="totalHours"/>
   <result column="day_hr" property="dayHours"/>
+  <result column="mno" property="owneNo"/>
   </resultMap>
+
+	<select id="findByParticipantNo" resultType="hashmap" parameterType="int">
+    select lm.mno memberNo, l.lno lessonNo, l.title
+    from les_memb lm
+      join lesson l on  lm.lno = l.lno
+    where lm.mno=#{value}
+	</select>
+<!-- 
 
 	<select id="findAll" resultMap="lessonMap">
 		select lno, title, sdt, edt, tot_hr 
     from lesson
 	</select>
-
-	<select id="findByNo" resultMap="lessonMap" parameterType="int">
-    select lno, title, cont, sdt, edt, tot_hr 
-    from lesson 
-    where lno =#{int}
-	</select>
-
 	<select id="insert" parameterType="lesson">
 		insert into
 		lesson(title, cont, sdt, edt, tot_hr, day_hr, mno)
@@ -45,4 +47,5 @@
 	delete from lesson 
 	where lno=#{value}
 	</delete>
+ -->
 </mapper>

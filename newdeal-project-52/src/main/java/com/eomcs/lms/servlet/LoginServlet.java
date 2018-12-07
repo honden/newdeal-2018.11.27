@@ -1,4 +1,4 @@
-package servlet;
+package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
+import com.eomcs.lms.Dao.MemberDao;
 import com.eomcs.lms.domain.Member;
-import Dao.MemberDao;
 
 @WebServlet("/auth/login")
 public class LoginServlet extends HttpServlet {
@@ -41,20 +41,18 @@ public class LoginServlet extends HttpServlet {
       HttpServletRequest request, 
       HttpServletResponse response)
       throws ServletException, IOException {
-    
     try {
       String email = request.getParameter("email");
       String password = request.getParameter("password");
-      
       Member member = memberDao.findByEmailPassword(email, password);
       
       // 해당 클라이언트를 위한 HttpSession 객체가 있다면,
       // 그 객체를 리턴한다.
       // 없다면, 새로 만들어 리턴한다.
       HttpSession session = request.getSession();
-      
       if (member != null) {
         session.setAttribute("loginUser", member);
+//        response.sendRedirect("login");
         response.sendRedirect("../board/list");
       } else {
         session.invalidate();

@@ -1,18 +1,19 @@
-package servlet;
+package com.eomcs.lms.servlet;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
-import Dao.BoardDao;
+import com.eomcs.lms.dao.BoardDao;
+import com.eomcs.lms.domain.Board;
 
-@WebServlet("/lesson/delete")
-public class LessonDeleteServlet extends HttpServlet {
+@WebServlet("/board/update")
+public class BoardUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
   BoardDao boardDao;
   
   @Override
@@ -24,20 +25,22 @@ public class LessonDeleteServlet extends HttpServlet {
   }
   
   @Override
-  protected void doGet(
+  protected void doPost(
       HttpServletRequest request, 
       HttpServletResponse response)
       throws ServletException, IOException {
 
     try {
-      int no = Integer.parseInt(request.getParameter("no"));
-      request.setAttribute("count", boardDao.delete(no));
+      Board board = new Board();
+      board.setNo(Integer.parseInt(request.getParameter("no")));
+      board.setContents(request.getParameter("contents"));
       
-      RequestDispatcher rd = request.getRequestDispatcher(
-          "/board/delete.jsp");
-      response.setContentType("text/html;charset=UTF-8");
-      rd.include(request, response);
+      boardDao.update(board);
       
+      // 데이터를 변경한 후 
+      // 웹브라우저에게 목록 URL을 다시 요청하라고 응답한다.
+      response.sendRedirect("list");
+    
     } catch (Exception e) {
       e.printStackTrace();
       throw new ServletException(e);

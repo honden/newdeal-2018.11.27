@@ -1,4 +1,4 @@
-package servlet;
+package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
+import com.eomcs.lms.Dao.BoardDao;
 import com.eomcs.lms.domain.Board;
-import Dao.BoardDao;
 @WebServlet("/board/detail")
 public class BoardDetailServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;

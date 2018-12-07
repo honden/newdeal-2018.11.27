@@ -1,11 +1,12 @@
-package Dao.impl;
+package com.eomcs.lms.Dao.impl;
 
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
+import com.eomcs.lms.Dao.LessonDao;
 import com.eomcs.lms.domain.Lesson;
-import Dao.LessonDao;
 
 @Component
 public class MariaDBLessonDao implements LessonDao{
@@ -16,9 +17,9 @@ public class MariaDBLessonDao implements LessonDao{
     this.sqlSessionFactory = sqlSessionFactory;
   }
 
-  public List<Lesson> findAll()throws Exception{
+  public List<Map<String,Object>> findByParticipantNo(int memberNo){
     try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-    return sqlSession.selectList("LessonDao.findAll");
+    return sqlSession.selectList("LessonDao.findByParticipantNo", memberNo);
     }
   }
 

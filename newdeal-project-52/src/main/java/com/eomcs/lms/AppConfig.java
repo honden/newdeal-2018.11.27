@@ -12,10 +12,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
-import Dao.BoardDao;
-import Dao.LessonDao;
-import Dao.impl.MariaDBBoardDao;
-import Dao.impl.MariaDBLessonDao;
+import com.eomcs.lms.Dao.BoardDao;
+import com.eomcs.lms.Dao.LessonDao;
+import com.eomcs.lms.Dao.impl.MariaDBBoardDao;
+import com.eomcs.lms.Dao.impl.MariaDBLessonDao;
 
 //spring ioc 컨테이너에게 패키지 이름을 알려주면 그 패키지를 뒤져서 
 //@Component가 붙은 붙은 클래스에 대해 인스턴스를 자동으로 생성해 준다

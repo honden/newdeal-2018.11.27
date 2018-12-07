@@ -2,8 +2,8 @@ package com.eomcs.lms.handler;
 
 import java.util.Scanner;
 import org.springframework.stereotype.Component;
+import com.eomcs.lms.Dao.LessonDao;
 import com.eomcs.lms.domain.Lesson;
-import Dao.LessonDao;
 @Component("/lesson/add")
 public class LessonAddCommand implements Command {
 

@@ -1,4 +1,4 @@
-package servlet;
+package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
-import Dao.BoardDao;
+import com.eomcs.lms.Dao.BoardDao;
 
 @WebServlet("/board/delete")
 public class BoardDeleteServlet extends HttpServlet {

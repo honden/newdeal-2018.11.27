@@ -1,4 +1,4 @@
-package Dao;
+package com.eomcs.lms.Dao;
 
 import com.eomcs.lms.domain.Member;
 

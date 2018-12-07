@@ -9,7 +9,16 @@ public class Lesson implements Cloneable {
   private Date endDate;
   private int totalHours;
   private int dayHours;
+  private int owneNo;
   
+  public int getOwneNo() {
+    return owneNo;
+  }
+
+  public void setOwneNo(int owneNo) {
+    this.owneNo = owneNo;
+  }
+
   @Override
   public Lesson clone() throws CloneNotSupportedException {
     return (Lesson) super.clone();

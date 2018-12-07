@@ -1,4 +1,4 @@
-package servlet;
+package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
+import com.eomcs.lms.dao.BoardDao;
 import com.eomcs.lms.domain.Board;
-import Dao.BoardDao;
-@WebServlet("/lesson/detail")
-public class LessonDetailServlet extends HttpServlet {
+
+@WebServlet("/board/detail")
+public class BoardDetailServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   BoardDao boardDao;
@@ -46,41 +47,6 @@ public class LessonDetailServlet extends HttpServlet {
   }
 }
 
-/*@WebServlet("/board/detail")
-public class BoardDetailServlet extends HttpServlet{
-  private static final long serialVersionUID = 1L;
-  BoardDao boardDao;
-  
-  @Override
-  public void init() {
-    ApplicationContext iocContainer = 
-        (ApplicationContext)this.getServletContext()
-        .getAttribute("iocContainer");
-    this.boardDao = iocContainer.getBean(BoardDao.class);
-  }
-@Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-    try {
-      System.out.print("번호? ");
-      
-      Board board = boardDao.findByNo(no);
-      board.getNo = Integer.parseInt(request.getParameter("no"));
-      
 
-//      request.setAttribute("detail", detail);
-      response.setContentType("text/html;charset=UTF-8");
-      //jsp에 위임한다
-      RequestDispatcher rd = request.getRequestDispatcher(
-          "/board/list.jsp");
-      
-      //출력콘텐트의 타입을 include하는 쪽에서 지정해야 한다
-      rd.include(request, response);
-      
-    }catch (Exception e){
-      e.printStackTrace();
-      throw new ServletException(e); 
-    }
-  }
-}
-*/
+
+

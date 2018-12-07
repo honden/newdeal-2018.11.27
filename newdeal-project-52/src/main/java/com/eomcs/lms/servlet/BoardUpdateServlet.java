@@ -1,4 +1,4 @@
-package servlet;
+package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
+import com.eomcs.lms.Dao.BoardDao;
 import com.eomcs.lms.domain.Board;
-import Dao.BoardDao;
 //서블릿을 만들었으면 톰켓 서버에 알려줘야 한다
 //서블릿에 url을 부여한다
 //서버 추가할때만 재시작하고, 서브릿에 내용 추가한 후는 
