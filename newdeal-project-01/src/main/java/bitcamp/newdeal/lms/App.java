@@ -3,12 +3,14 @@
  */
 package bitcamp.newdeal.lms;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+import java.util.Scanner;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+      System.out.printf("숫자를 입력하시오");
+      Test t = new Test();
+      Scanner sc = new Scanner(System.in);
+      int num = sc.nextInt(); 
+      t.input(num);
     }
 }
